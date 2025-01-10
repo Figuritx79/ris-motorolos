@@ -9,11 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mx.edu.utez.rismotorolos.doctor.model.Doctor;
 import mx.edu.utez.rismotorolos.pacient.model.Pacient;
 
 @Entity
@@ -31,8 +33,9 @@ public class Date {
     @JoinColumn(name = "id_pacient", columnDefinition = "TINYINT")
     private Pacient pacient;
 
-    // private long idDoctor;
-
+    @OneToMany
+    @JoinColumn(name = "id_doctor", columnDefinition = "TINYINT")
+    private Doctor doctor;
     @Column(name = "date_time", columnDefinition = "TIMESTAMP")
     private Timestamp dateTime;
 }

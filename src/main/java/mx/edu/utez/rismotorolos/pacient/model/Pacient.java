@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
         @Index(name = "pacient_name", columnList = "name"),
         @Index(name = "pacient_curp", columnList = "curp"),
         @Index(name = "pacient_social_number", columnList = "social_number_secure")
-
 })
 @AllArgsConstructor
 @NoArgsConstructor

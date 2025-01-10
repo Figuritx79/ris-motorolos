@@ -1,16 +1,22 @@
 package mx.edu.utez.rismotorolos.nurse.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mx.edu.utez.rismotorolos.doctor.model.Doctor;
 
 @Entity
 @Table(name = "nurse", indexes = {
@@ -38,4 +44,7 @@ public class Nurse {
     @Column(name = "phone_number", columnDefinition = "VARCHAR(10)", nullable = false)
     private String phone;
 
+    @OneToMany(mappedBy = "nurse")
+    @JsonIgnore
+    List<Doctor> doctors;
 }

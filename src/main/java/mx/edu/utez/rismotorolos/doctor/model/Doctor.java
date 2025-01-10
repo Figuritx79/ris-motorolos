@@ -1,7 +1,12 @@
 package mx.edu.utez.rismotorolos.doctor.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import mx.edu.utez.rismotorolos.date.model.Date;
 import mx.edu.utez.rismotorolos.nurse.model.Nurse;
 import mx.edu.utez.rismotorolos.stock.model.Stock;
 
@@ -25,18 +30,23 @@ public class Doctor {
     @NotNull
     private String phone_number;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nurse_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "nurse_id", nullable = false, columnDefinition = "TINYINT")
     private Nurse nurse;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
+    @ManyToOne
+    @JsonIgnore
+    private List<Date> dates;
+
     public Doctor() {
     }
 
-    public Doctor(Long id, String name, String last_name, String professional_id, String phone_number, Nurse nurse, Stock stock) {
+    public Doctor(Long id, String name, String last_name, String professional_id, String phone_number, Nurse nurse,
+            Stock stock) {
         this.id = id;
         this.name = name;
         this.last_name = last_name;

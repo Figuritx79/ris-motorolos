@@ -29,7 +29,8 @@ public class DoctorDto {
     public DoctorDto() {
     }
 
-    public DoctorDto(Long id, String name, String last_name, String professional_id, String phone_number, Nurse nurse, Stock stock) {
+    public DoctorDto(Long id, String name, String last_name, String professional_id, String phone_number, Nurse nurse,
+            Stock stock) {
         this.id = id;
         this.name = name;
         this.last_name = last_name;
@@ -47,8 +48,7 @@ public class DoctorDto {
                 doctor.getProfessional_id(),
                 doctor.getPhone_number(),
                 doctor.getNurse(),
-                doctor.getStock()
-        );
+                doctor.getStock());
     }
 
     public Doctor toEntity() {
@@ -59,8 +59,7 @@ public class DoctorDto {
                 this.professional_id,
                 this.phone_number,
                 this.nurse,
-                this.stock
-        );
+                this.stock);
     }
 
     public Long getId() {
@@ -91,7 +90,8 @@ public class DoctorDto {
         return professional_id;
     }
 
-    public void setProfessional_id(@NotNull(message = "La cédula profesional del doctor es obligatoria") String professional_id) {
+    public void setProfessional_id(
+            @NotNull(message = "La cédula profesional del doctor es obligatoria") String professional_id) {
         this.professional_id = professional_id;
     }
 
@@ -99,7 +99,8 @@ public class DoctorDto {
         return phone_number;
     }
 
-    public void setPhone_number(@NotNull(message = "El número de teléfono del doctor es obligatorio") String phone_number) {
+    public void setPhone_number(
+            @NotNull(message = "El número de teléfono del doctor es obligatorio") String phone_number) {
         this.phone_number = phone_number;
     }
 
