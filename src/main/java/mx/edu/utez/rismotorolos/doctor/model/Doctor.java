@@ -1,11 +1,16 @@
 package mx.edu.utez.rismotorolos.doctor.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.nurse.model.Nurse;
 import mx.edu.utez.rismotorolos.stock.model.Stock;
 
+@Entity
+@Table(name = "doctors")
 public class Doctor {
-    @NotNull
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -20,10 +25,12 @@ public class Doctor {
     @NotNull
     private String phone_number;
 
-    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nurse_id", nullable = false)
     private Nurse nurse;
 
-    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
     public Doctor() {
@@ -47,35 +54,35 @@ public class Doctor {
         this.id = id;
     }
 
-    public String getName() {
+    public @NotNull String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 
-    public String getLast_name() {
+    public @NotNull String getLast_name() {
         return last_name;
     }
 
-    public void setLast_name(String last_name) {
+    public void setLast_name(@NotNull String last_name) {
         this.last_name = last_name;
     }
 
-    public String getProfessional_id() {
+    public @NotNull String getProfessional_id() {
         return professional_id;
     }
 
-    public void setProfessional_id(String professional_id) {
+    public void setProfessional_id(@NotNull String professional_id) {
         this.professional_id = professional_id;
     }
 
-    public String getPhone_number() {
+    public @NotNull String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(String phone_number) {
+    public void setPhone_number(@NotNull String phone_number) {
         this.phone_number = phone_number;
     }
 

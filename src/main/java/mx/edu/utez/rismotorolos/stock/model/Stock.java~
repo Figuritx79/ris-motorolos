@@ -1,27 +1,23 @@
 package mx.edu.utez.rismotorolos.stock.model;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.facture.model.Facture;
 import mx.edu.utez.rismotorolos.item.model.Item;
 
-@Entity
-@Table(name = "stocks")
+import java.lang.annotation.Native;
+
 public class Stock {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
 
     @NotNull
     private int amount;
 
-    @ManyToOne
-    @JoinColumn(name = "facture_id", nullable = false)
+    @NotNull
     private Facture facture;
 
-    @ManyToOne
-    @JoinColumn(name = "item_id", nullable = false)
+    @NotNull
     private Item item;
 
     public Stock() {
