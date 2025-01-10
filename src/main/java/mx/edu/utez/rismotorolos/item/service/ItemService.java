@@ -2,51 +2,53 @@ package mx.edu.utez.rismotorolos.item.service;
 
 import mx.edu.utez.rismotorolos.item.model.Item;
 import mx.edu.utez.rismotorolos.item.model.ItemDto;
+import mx.edu.utez.rismotorolos.item.model.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ItemService {
 
-    private final List<Item> items = new ArrayList<>();
+    @Autowired
+    private ItemRepository itemRepository;
 
     public Item createItem(ItemDto itemDto) {
-        Item item = itemDto.toEntity();
-        items.add(item);
-        return item;
+        return itemRepository.save(itemDto.toEntity());
     }
 
     public List<ItemDto> getAllItems() {
-        List<ItemDto> itemDtos = new ArrayList<>();
-        for (Item item : items) {
-            itemDtos.add(ItemDto.fromEntity(item));
-        }
-        return itemDtos;
+        return itemRepository.findAll()
+                .stream()
+                .map(ItemDto::fromEntity)
+                .collect(Collectors.toList());
     }
 
     public Optional<ItemDto> getItemById(Long id) {
-        return items.stream()
-                .filter(item -> item.getId().equals(id))
-                .findFirst()
+        return itemRepository.findById(id)
                 .map(ItemDto::fromEntity);
     }
 
-    public Optional<Item> updateItem(Long id, ItemDto itemDto) {
-        return items.stream()
-                .filter(item -> item.getId().equals(id))
-                .findFirst()
-                .map(existingItem -> {
-                    existingItem.setMedicine_name(itemDto.getmedicine_name());
-                    existingItem.setDescription(itemDto.getDescription());
-                    existingItem.setPrice(itemDto.getPrice());
-                    return existingItem;
-                });
+    public Optional<ItemDto> updateItem(Long id, ItemDto itemDto) {
+        Optional<Item> existingItem = itemRepository.findById(id);
+        if (existingItem.isPresent()) {
+            Item item = existingItem.get();
+            item.setMedicine_name(itemDto.getmedicine_name());
+            item.setDescription(itemDto.getDescription());
+            item.setPrice(itemDto.getPrice());
+            return Optional.of(ItemDto.fromEntity(itemRepository.save(item)));
+        }
+        return Optional.empty();
     }
 
     public boolean deleteItem(Long id) {
-        return items.removeIf(item -> item.getId().equals(id));
+        if (itemRepository.existsById(id)) {
+            itemRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

@@ -16,7 +16,7 @@ public class FactureController {
 
     @Autowired
     private FactureService factureService;
-
+    
     @GetMapping
     public List<Facture> getAll() {
         return factureService.findAll();

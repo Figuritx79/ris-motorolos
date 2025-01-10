@@ -1,4 +1,6 @@
 package mx.edu.utez.rismotorolos.facture.model;
 
-public interface FactureRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FactureRepository extends JpaRepository<Facture, Long> {
 }

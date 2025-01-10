@@ -41,6 +41,7 @@ public class Facture {
         this.factureDate = factureDate;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
     }

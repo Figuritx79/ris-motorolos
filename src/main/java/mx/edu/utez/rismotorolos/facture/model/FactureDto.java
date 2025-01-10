@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class FactureDto {
 
-    @NotNull(message = "El ID de la factura es obligatorio")
     private Long id;
 
     @NotNull(message = "El monto de la factura es obligatorio")
@@ -16,20 +15,20 @@ public class FactureDto {
     private String rfc;
 
     @NotNull(message = "El régimen fiscal de la factura es obligatorio")
-    private String tax_regime;
+    private String taxRegime;
 
     @NotNull(message = "La fecha de la factura es obligatoria")
-    private Date facture_date;
+    private Date factureDate;
 
     public FactureDto() {
     }
 
-    public FactureDto(Long id, double amount, String rfc, String tax_regime, Date facture_date) {
+    public FactureDto(Long id, double amount, String rfc, String taxRegime, Date factureDate) {
         this.id = id;
         this.amount = amount;
         this.rfc = rfc;
-        this.tax_regime = tax_regime;
-        this.facture_date = facture_date;
+        this.taxRegime = taxRegime;
+        this.factureDate = factureDate;
     }
 
     public static FactureDto fromEntity(Facture facture) {
@@ -37,8 +36,8 @@ public class FactureDto {
                 facture.getId(),
                 facture.getAmount(),
                 facture.getRfc(),
-                facture.getTax_regime(),
-                facture.getFacture_date()
+                facture.getTaxRegime(),
+                facture.getFactureDate()
         );
     }
 
@@ -47,8 +46,8 @@ public class FactureDto {
                 this.id,
                 this.amount,
                 this.rfc,
-                this.tax_regime,
-                this.facture_date
+                this.taxRegime,
+                this.factureDate
         );
     }
 
@@ -76,19 +75,19 @@ public class FactureDto {
         this.rfc = rfc;
     }
 
-    public String getTax_regime() {
-        return tax_regime;
+    public String getTaxRegime() {
+        return taxRegime;
     }
 
-    public void setTax_regime(String tax_regime) {
-        this.tax_regime = tax_regime;
+    public void setTaxRegime(String taxRegime) {
+        this.taxRegime = taxRegime;
     }
 
-    public Date getFacture_date() {
-        return facture_date;
+    public Date getFactureDate() {
+        return factureDate;
     }
 
-    public void setFacture_date(Date facture_date) {
-        this.facture_date = facture_date;
+    public void setFactureDate(Date factureDate) {
+        this.factureDate = factureDate;
     }
 }

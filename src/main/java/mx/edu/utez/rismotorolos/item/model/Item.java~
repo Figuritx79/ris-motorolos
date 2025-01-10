@@ -1,23 +1,18 @@
 package mx.edu.utez.rismotorolos.item.model;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "items")
 public class Item {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
 
-    @NotNull(message = "La medicina debe de contar con un nombre")
+    @NotNull
     private String medicine_name;
 
-    @NotNull(message = "El item debe de contar con una descripcion")
+    @NotNull
     private String description;
 
-    @NotNull(message = "El item debe de contar con un precio")
+    @NotNull
     private Double price;
 
     public Item() {
@@ -30,7 +25,6 @@ public class Item {
         this.price = price;
     }
 
-    // Getters y setters
     public Long getId() {
         return id;
     }
