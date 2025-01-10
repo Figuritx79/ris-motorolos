@@ -37,6 +37,7 @@ out/
 .vscode/
 
 # Idea
-.idea
+.idea/
 
+servicio_test.*
 
