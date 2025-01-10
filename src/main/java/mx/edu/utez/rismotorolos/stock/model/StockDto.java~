@@ -1,20 +1,12 @@
 package mx.edu.utez.rismotorolos.stock.model;
 
-import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.facture.model.Facture;
 import mx.edu.utez.rismotorolos.item.model.Item;
 
 public class StockDto {
-
     private Long id;
-
-    @NotNull(message = "La cantidad no puede ser nula")
     private int amount;
-
-    @NotNull(message = "La factura no puede ser nula")
     private Facture facture;
-
-    @NotNull(message = "El ítem no puede ser nulo")
     private Item item;
 
     public StockDto() {

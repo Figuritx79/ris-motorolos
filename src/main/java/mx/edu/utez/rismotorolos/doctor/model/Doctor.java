@@ -1,15 +1,29 @@
 package mx.edu.utez.rismotorolos.doctor.model;
 
+import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.nurse.model.Nurse;
 import mx.edu.utez.rismotorolos.stock.model.Stock;
 
 public class Doctor {
+    @NotNull
     private Long id;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String last_name;
+
+    @NotNull
     private String professional_id;
+
+    @NotNull
     private String phone_number;
+
+    @NotNull
     private Nurse nurse;
+
+    @NotNull
     private Stock stock;
 
     public Doctor() {

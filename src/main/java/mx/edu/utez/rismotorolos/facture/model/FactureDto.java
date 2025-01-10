@@ -1,12 +1,24 @@
 package mx.edu.utez.rismotorolos.facture.model;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 public class FactureDto {
+
+    @NotNull(message = "El ID de la factura es obligatorio")
     private Long id;
+
+    @NotNull(message = "El monto de la factura es obligatorio")
     private double amount;
+
+    @NotNull(message = "El RFC de la factura es obligatorio")
     private String rfc;
+
+    @NotNull(message = "El régimen fiscal de la factura es obligatorio")
     private String tax_regime;
+
+    @NotNull(message = "La fecha de la factura es obligatoria")
     private Date facture_date;
 
     public FactureDto() {

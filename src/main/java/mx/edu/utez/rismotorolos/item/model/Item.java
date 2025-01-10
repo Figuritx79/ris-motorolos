@@ -1,9 +1,18 @@
 package mx.edu.utez.rismotorolos.item.model;
 
+import jakarta.validation.constraints.NotNull;
+
 public class Item {
+    @NotNull
     private Long id;
+
+    @NotNull
     private String medicine_name;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private Double price;
 
     public Item() {

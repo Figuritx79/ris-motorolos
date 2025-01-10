@@ -1,12 +1,23 @@
 package mx.edu.utez.rismotorolos.facture.model;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 public class Facture {
+    @NotNull
     private Long id;
+
+    @NotNull
     private double amount;
+
+    @NotNull
     private String rfc;
+
+    @NotNull
     private String tax_regime;
+
+    @NotNull
     private Date facture_date;
 
     public Facture() {

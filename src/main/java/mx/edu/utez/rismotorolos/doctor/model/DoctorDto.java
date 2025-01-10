@@ -1,15 +1,29 @@
 package mx.edu.utez.rismotorolos.doctor.model;
 
+import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.nurse.model.Nurse;
 import mx.edu.utez.rismotorolos.stock.model.Stock;
 
 public class DoctorDto {
+    @NotNull(message = "El ID del doctor es obligatorio")
     private Long id;
+
+    @NotNull(message = "El nombre del doctor es obligatorio")
     private String name;
+
+    @NotNull(message = "El apellido del doctor es obligatorio")
     private String last_name;
+
+    @NotNull(message = "La cédula profesional del doctor es obligatoria")
     private String professional_id;
+
+    @NotNull(message = "El número de teléfono del doctor es obligatorio")
     private String phone_number;
+
+    @NotNull(message = "La enfermera asociada es obligatoria")
     private Nurse nurse;
+
+    @NotNull(message = "El stock asociado es obligatorio")
     private Stock stock;
 
     public DoctorDto() {

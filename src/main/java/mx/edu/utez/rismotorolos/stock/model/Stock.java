@@ -1,12 +1,23 @@
 package mx.edu.utez.rismotorolos.stock.model;
 
+import jakarta.validation.constraints.NotNull;
 import mx.edu.utez.rismotorolos.facture.model.Facture;
 import mx.edu.utez.rismotorolos.item.model.Item;
 
+import java.lang.annotation.Native;
+
 public class Stock {
+
+    @NotNull
     private Long id;
+
+    @NotNull
     private int amount;
+
+    @NotNull
     private Facture facture;
+
+    @NotNull
     private Item item;
 
     public Stock() {
