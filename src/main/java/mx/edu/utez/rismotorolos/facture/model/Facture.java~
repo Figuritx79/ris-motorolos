@@ -1,0 +1,12 @@
+package mx.edu.utez.rismotorolos.facture.model;
+
+import java.util.Date;
+
+public class Facture {
+    private Long id;
+    private double amount;
+    private String rfc;
+    private String tax_regime;
+    private Date ;
+
+}
