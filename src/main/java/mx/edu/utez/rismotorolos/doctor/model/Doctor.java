@@ -6,12 +6,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 import mx.edu.utez.rismotorolos.date.model.Date;
 import mx.edu.utez.rismotorolos.nurse.model.Nurse;
+import mx.edu.utez.rismotorolos.role.model.Role;
 import mx.edu.utez.rismotorolos.stock.model.Stock;
 
 @Entity
 @Table(name = "doctors")
+@Getter
+@Setter
 public class Doctor {
 
     @Id
@@ -30,6 +35,12 @@ public class Doctor {
     @NotNull
     private String phone_number;
 
+    @Column(name = "email", columnDefinition = "VARCHAR(50)")
+    private String email;
+
+    @Column(name = "password", columnDefinition = "VARCHAR(100)")
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "nurse_id", nullable = false, columnDefinition = "TINYINT")
     private Nurse nurse;
@@ -38,15 +49,19 @@ public class Doctor {
     @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "doctor")
     @JsonIgnore
     private List<Date> dates;
+
+    @ManyToOne
+    @JoinColumn(name = "id_role", columnDefinition = "TINYINT")
+    private Role role;
 
     public Doctor() {
     }
 
     public Doctor(Long id, String name, String last_name, String professional_id, String phone_number, Nurse nurse,
-            Stock stock) {
+                  Stock stock) {
         this.id = id;
         this.name = name;
         this.last_name = last_name;
@@ -56,59 +71,6 @@ public class Doctor {
         this.stock = stock;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public @NotNull String getName() {
-        return name;
-    }
-
-    public void setName(@NotNull String name) {
-        this.name = name;
-    }
-
-    public @NotNull String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(@NotNull String last_name) {
-        this.last_name = last_name;
-    }
-
-    public @NotNull String getProfessional_id() {
-        return professional_id;
-    }
-
-    public void setProfessional_id(@NotNull String professional_id) {
-        this.professional_id = professional_id;
-    }
-
-    public @NotNull String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(@NotNull String phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public Nurse getNurse() {
-        return nurse;
-    }
-
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
 }
+
+

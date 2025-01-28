@@ -33,9 +33,10 @@ public class Date {
     @JoinColumn(name = "id_pacient", columnDefinition = "TINYINT")
     private Pacient pacient;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_doctor", columnDefinition = "TINYINT")
     private Doctor doctor;
+
     @Column(name = "date_time", columnDefinition = "TIMESTAMP")
     private Timestamp dateTime;
 }

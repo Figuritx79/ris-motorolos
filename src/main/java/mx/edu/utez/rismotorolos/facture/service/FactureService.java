@@ -5,10 +5,12 @@ import mx.edu.utez.rismotorolos.facture.model.FactureDto;
 import mx.edu.utez.rismotorolos.facture.model.FactureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class FactureService {
 

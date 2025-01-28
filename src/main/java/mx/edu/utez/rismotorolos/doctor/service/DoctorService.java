@@ -5,12 +5,15 @@ import mx.edu.utez.rismotorolos.doctor.model.Doctor;
 import mx.edu.utez.rismotorolos.doctor.model.DoctorDto;
 import mx.edu.utez.rismotorolos.doctor.model.DoctorRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class DoctorService {
 
     private final DoctorRepository doctorRepository;

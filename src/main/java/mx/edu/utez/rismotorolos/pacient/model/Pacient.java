@@ -1,14 +1,6 @@
 package mx.edu.utez.rismotorolos.pacient.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Index;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +10,7 @@ import mx.edu.utez.rismotorolos.queue.model.QueueModel;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "pacient", indexes = {
         @Index(name = "pacient_name", columnList = "name"),
@@ -61,7 +50,7 @@ public class Pacient {
 
     @ManyToOne
     @JoinColumn(name = "queue", columnDefinition = "TINYINT")
-    private QueueModel queueModel;
+    private QueueModel queue;
 
     public Pacient(String name, String lastName, String curp, long socialNumberSecure, long phoneNumber, String email) {
         this.name = name;

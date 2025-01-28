@@ -1,4 +1,4 @@
 package mx.edu.utez.rismotorolos.queue.service;
 
-public class QueueService {
-}
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;

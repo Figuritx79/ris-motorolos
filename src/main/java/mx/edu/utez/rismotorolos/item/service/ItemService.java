@@ -5,12 +5,14 @@ import mx.edu.utez.rismotorolos.item.model.ItemDto;
 import mx.edu.utez.rismotorolos.item.model.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class ItemService {
 
     @Autowired
